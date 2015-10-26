@@ -1,0 +1,19 @@
+db:
+  image: mysql
+  env_file:
+    - common.env
+
+app:
+  build: app
+  links:
+    - db
+
+web:
+  build: web
+  links:
+    - app
+  volumes_from:
+    - app
+  ports:
+    - "8000:80"
+
