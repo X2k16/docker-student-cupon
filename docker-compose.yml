@@ -1,0 +1,24 @@
+db-data:
+  build: db-data
+
+db:
+  image: mysql
+  volumes_from:
+    - db-data
+  env_file:
+    - common.env
+
+app:
+  build: app
+  links:
+    - db
+
+web:
+  build: web
+  links:
+    - app
+  volumes_from:
+    - app
+  ports:
+    - "8000:80"
+
