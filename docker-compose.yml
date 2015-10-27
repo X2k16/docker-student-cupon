@@ -1,5 +1,10 @@
+db-data:
+  build: db-data
+
 db:
   image: mysql
+  volumes_from:
+    - db-data
   env_file:
     - common.env
 
