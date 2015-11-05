@@ -4,7 +4,10 @@ RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get -y install php5-fpm
 RUN apt-get -y install php5-mysql
+RUN apt-get -y install php-pear
 RUN apt-get -y install git
+RUN pear install Net_SMTP
+RUN pear install mail
 
 ADD www.conf /etc/php5/fpm/pool.d/www.conf
 ADD php.ini /etc/php5/fpm/php.ini
